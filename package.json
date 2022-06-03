@@ -1,0 +1,24 @@
+{
+  "name": "express-mongoose",
+  "version": "1.0.0",
+  "description": "Actividad del master del módulo de Arquitectura de servidores con las siguientes características:donde se crea un modelo de datos, CRUD, registro de usuario con email y contraseña",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node.js",
+    "express.js",
+    "mongoose",
+    "nodemailer"
+  ],
+  "author": "Yessica Bao",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.16"
+  }
+}
