@@ -2,10 +2,10 @@
   "name": "express-mongoose",
   "version": "1.0.0",
   "description": "Actividad del master del módulo de Arquitectura de servidores con las siguientes características:donde se crea un modelo de datos, CRUD, registro de usuario con email y contraseña",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [
     "node.js",
@@ -16,9 +16,23 @@
   "author": "Yessica Bao",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "mongoose": "^6.3.5",
-    "nodemailer": "^6.7.5",
-    "nodemon": "^2.0.16"
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^3.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^7.5.1",
+    "mongoose": "^6.0.12",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
+    "cloudinary": "^1.26.0",
+    "nodemailer": "^6.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }
