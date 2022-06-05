@@ -3,27 +3,21 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
-    title: {
+    full_name: {
         type: String,
         required: true,
         minlength: 5,
     },
-    description: {
+    phone: {
         type: String,
         required: true,
         minlength: 5,
     },
-    address: {
+    email: {
         type: String,
         required: true,
         minlength: 5,
     },
-    contact_id: mongoose.ObjectId,
-    image: {
-        type: String, 
-        required: true,
-    },
-
 }, { timestamps: true,
     toJSON: {
         transform: (doc, ret) => {
@@ -35,4 +29,4 @@ const schema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Account', schema)
+module.exports = mongoose.model('Contact', schema)

@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    createdAt: Date,
-    updatedAt: Date,
-    due_date: Date,
-    opportunity_id: mongoose.ObjectId,
-    activity_id: mongoose.ObjectId,
+    due_date: {
+        type: Date,
+        required: true
+    },
+    opportunity_id: {
+        type: mongoose.ObjectId,
+        required: true,
+    },
     comment: {
         type: String,
         required: true,
