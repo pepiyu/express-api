@@ -10,14 +10,18 @@ const list = (req, res, next) => {
     .catch(next);
 }
 
-const create = (req, res) => {
+const create = (req, res, next) => {
     
-    const body = {} = req.body;
+    const data = {title, address, description, phoneNumber} = req.body;
 
-    Accounts.create({...body})
+    Accounts.create({
+        ...data,
+        image: req.file?.path
+    })
     .then(account => {
         res.status(201).json(account);
     })
+    .catch(next)
 }
 
 const detail = (req, res, next) => {
@@ -27,14 +31,14 @@ const detail = (req, res, next) => {
         if (account) {
             res.json(account);
         } else {
-            next(createError(404, 'post not found'));
+            next(createError(404, 'Account not found'));
         }
 
     })
 }
 
 const update = (req, res, next) => {
-    const body = {} = req.body;
+    const body = {title, address, description, phoneNumber} = req.body;
 
     Accounts.findByIdAndUpdate(req.params.id, body, { new: true }).then( account => {
         if (account) {

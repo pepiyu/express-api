@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    id: String,
     createdAt: Date,
     updatedAt: Date,
     title: {
@@ -9,19 +8,25 @@ const schema = new mongoose.Schema({
         required: true,
         minlength: 5,
     },
-    text: {
+    description: {
         type: String,
         required: true,
         minlength: 5,
+    },
+    address: {
+        type: String,
+        required: true,
+        minlength: 5,
+    },
+    phoneNumber: {
+        type: String,
+        required: true,
+        minlength: 9,
     },
     image: {
         type: String, 
         required: true,
         
-    },
-    author: {
-        type: String,
-        required: true,
     },
 
 }, { timestamps: true,

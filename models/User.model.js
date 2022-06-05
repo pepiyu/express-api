@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const schema = new mongoose.Schema({
-    name: {
+    username: {
         type: String, 
         required: true
     },
@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
     bio: String,
     active: {
         type: Boolean, 
-        default: true 
+        default: false 
     },
     createdAt: Date,
     updatedAt: Date,

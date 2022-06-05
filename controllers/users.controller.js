@@ -4,7 +4,7 @@ const mailer = require('../config/mailer.config')
 const jwt = require('jsonwebtoken')
 
 const create = (req, res, next) => {
-    const data = { name, username, bio, private, password } = req.body
+    const data = { username, email, bio, password } = req.body
 
     User.create(data)
     .then((user) => {
@@ -16,7 +16,7 @@ const create = (req, res, next) => {
 }
 
 const update = (req, res, next) => {
-    const body = { name, username, bio, private, password } = req.body
+    const body = { username, email, bio, password } = req.body
 
     User.findByIdAndUpdate(req.params.id, body, { new: true })
     .then(user => {
