@@ -18,16 +18,6 @@ const loadUser = (req, res, next) => {
     
                 if(err) {
                     next(createError(404, err))
-                } else {
-                    User.findById(decoded.sub)
-                        .then((user) => {
-                            if (user) {
-                                req.user = user;
-                            }
-                            next()
-                        })
-                        .catch(next)
-    
                 }
             })
 
