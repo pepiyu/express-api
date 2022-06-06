@@ -6,14 +6,16 @@ const logger = require('morgan')
 const mongoose = require('mongoose')
 require('./config/db.config')
 const session = require('./config/session.config')
-const auth = require('./middlewares/auth.middleware')
-
+const auth = require('./middlewares/sec.middleware')
+const passport = require('passport');
 const app = express()
 
 // Middlewares
 app.use(logger('dev'))
 app.use(express.json())
 app.use(session)
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(auth.loadUser)
 
 

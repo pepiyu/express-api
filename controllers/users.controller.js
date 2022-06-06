@@ -47,7 +47,7 @@ const login = (req, res, next) => {
                 if (match) {
 
                     // Cookie auth
-                    //req.session.userId = user.id
+                    req.session.user = user.id
                     //res.json(user)
 
                     //JWT auth
@@ -87,6 +87,7 @@ const activate = (req, res, next) => {
 
 const logout = (req, res, next) => {
     req.session.destroy()
+    //req.logout();
     res.status(204).end()
 }
 
