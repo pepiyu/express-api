@@ -87,7 +87,6 @@ const activate = (req, res, next) => {
 
 const logout = (req, res, next) => {
     req.session.destroy()
-    //req.logout();
     res.status(204).end()
 }
 

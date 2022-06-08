@@ -32,6 +32,7 @@ const loadUser = (req, res, next) => {
 }
 
 const auth = (req, res, next) => {
+    //console.log(req);
     if (req.isAuthenticated()) {
         next()
     } else {

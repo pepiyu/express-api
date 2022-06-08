@@ -9,11 +9,13 @@ const session = require('./config/session.config')
 const auth = require('./middlewares/sec.middleware')
 const passport = require('passport');
 const app = express()
+const cors = require('./config/cors.config')
 
 // Middlewares
 app.use(logger('dev'))
 app.use(express.json())
 app.use(session)
+app.use(cors)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(auth.loadUser)
