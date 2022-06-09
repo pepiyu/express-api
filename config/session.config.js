@@ -9,7 +9,7 @@ const session = expressSession({
   saveUninitialized: false,
   resave: false,
   cookie: {
-    secure: process.env.SESSION_SECURE || false,
+    secure: process.env.SESSION_SECURE || true,
     httpOnly: true,
     sameSite: 'none',
     maxAge: process.env.SESSION_MAX_AGE || 3600000000,
