@@ -10,8 +10,6 @@ const session = expressSession({
   resave: false,
   cookie: {
     httpOnly: true,
-    sameSite: 'none',
-    secure: true,
     maxAge: process.env.SESSION_MAX_AGE || 3600000000,
   },
   store: new MongoStore({
