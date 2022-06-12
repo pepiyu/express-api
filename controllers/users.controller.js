@@ -56,8 +56,23 @@ const login = (req, res, next) => {
           next(createError(400, validations))
         } else {
           req.login(user, error => {
-            if (error) next(error)
-            else res.json(user)
+            if (error) {
+                next(error)
+
+            } else {
+
+                //JWT auth
+                const token = jwt.sign(
+                    {
+                        sub: user.id,
+                        exp: Math.floor(Date.now() / 1000) + 60 * 60,
+                    }, process.env.JWT_SECRET)
+
+                res.json({
+                    accessToken: token,
+                })
+
+            }
           })
         }
       })(req, res, next);}
