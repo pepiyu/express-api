@@ -47,7 +47,11 @@ const login = (req, res, next) => {
                 if (match) {
 
                     // Cookie auth
-                    req.session.user = user.id
+                    req.session.user = req.body.user
+
+                    req.session.save(function (err) {
+                        if (err) return next(err)
+                      })
                     //res.json(user)
 
                     //JWT auth
