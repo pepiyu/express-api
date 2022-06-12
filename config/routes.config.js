@@ -58,6 +58,7 @@ router.get('/users/:id/activate', users.activate);
 router.post('/login', users.login);
 
 router.get('/users', sec.auth, users.list);
+router.get('/users/detail/:id', sec.auth, users.detail);
 router.patch('/users/:id', sec.auth, users.update);
 router.post('/logout', sec.auth, users.logout);
 
