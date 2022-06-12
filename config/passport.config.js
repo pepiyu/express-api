@@ -1,7 +1,6 @@
 const passport = require('passport');
 const User = require('../models/User.model');
 const LocalStrategy = require('passport-local').Strategy;
-const jwt = require('jsonwebtoken')
 
 passport.serializeUser((user, next) => {
   next(null, user.id);
@@ -25,14 +24,7 @@ passport.use('local-auth', new LocalStrategy({
         return user.checkPassword(password)
           .then(match => {
             if (match) {
-
-              const accessToken = jwt.sign(
-                {
-                    sub: user.id,
-                    exp: Math.floor(Date.now() / 1000) + 60 * 60,
-                }, process.env.JWT_SECRET)
-
-              next(null, accessToken)
+              next(null, user)
             } else {
               next(null, null, { message: 'Invalid username or password' })
             }
