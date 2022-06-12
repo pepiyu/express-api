@@ -10,6 +10,15 @@ const auth = require('./middlewares/sec.middleware')
 const passport = require('passport');
 const app = express()
 const cors = require('./config/cors.config')
+const express = require('express')
+const session = require('express-session')
+
+app.use(session({
+  secret: 'super secret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 
 // Middlewares
 app.use(logger('dev'))
