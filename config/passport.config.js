@@ -13,7 +13,7 @@ passport.deserializeUser((id, next) => {
 });
 
 passport.use('local-auth', new LocalStrategy({
-  usernameField: 'username',
+  usernameField: 'email',
   passwordField: 'password'
 }, (username, password, next) => {
   User.findOne({ username })
