@@ -1,6 +1,16 @@
 const createError = require('http-errors')
 const User = require('../models/User.model')
 const jwt = require('jsonwebtoken')
+const express = require('express')
+const session = require('express-session')
+
+const app = express()
+
+app.use(session({
+  secret: 'super secret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 const loadUser = (req, res, next) => {
     if (req.session.user && req.headers.authorization) {
