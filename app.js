@@ -10,6 +10,7 @@ const auth = require('./middlewares/sec.middleware')
 const passport = require('passport');
 const app = express()
 const cors = require('./config/cors.config')
+require('./config/passport.config');
 
 // Middlewares
 app.use(logger('dev'))
