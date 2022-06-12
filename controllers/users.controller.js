@@ -16,6 +16,17 @@ const create = (req, res, next) => {
     .catch(next)
 }
 
+const detail = (req, res, next) => {
+
+    User.findById(req.params.id).then((user) => {
+        if (user) {
+            res.json(user);
+        } else {
+            next(createError(404, 'item not found'))
+        }
+    })
+}
+
 const update = (req, res, next) => {
     const body = { username, email, bio, password } = req.body
 
@@ -70,6 +81,7 @@ const logout = (req, res, next) => {
 
 module.exports = {
     create,
+    detail,
     update,
     list,
     login,
