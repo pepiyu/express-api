@@ -2,7 +2,6 @@ const User = require('../models/User.model')
 const createError = require('http-errors')
 const mailer = require('../config/mailer.config')
 const jwt = require('jsonwebtoken')
-const passport = require('passport');
 
 const create = (req, res, next) => {
     const data = { username, email, bio, password } = req.body
@@ -38,18 +37,39 @@ const list = (req, res, next) => {
 }
  
 const login = (req, res, next) => {
-    passport.authenticate('local-auth', (error, user, validations) => {
-        if (error) {
-          next(error);
-        } else if (!user) {
-          next(createError(400, validations))
+    const body = ({ email, password } = req.body)
+
+    User.findOne( { email, active: true })
+    .then((user) => {
+        if (user) {
+            user.checkPassword(password)
+            .then((match) => {
+                if (match) {
+
+                    // Cookie auth
+                    req.session.user = user.id
+                    //res.json(user)
+
+                    //JWT auth
+                    const token = jwt.sign(
+                        {
+                            sub: user.id,
+                            exp: Math.floor(Date.now() / 1000) + 60 * 60,
+                        }, process.env.JWT_SECRET)
+
+                    res.json({
+                        accessToken: token,
+                    })
+
+                } else {
+                    next(createError(401, "Unauthorized"))
+                }
+            })
         } else {
-          req.login(user, error => {
-            if (error) next(error)
-            else res.json(user)
-          })
+            next(createError(404, "User not found"))
         }
-      })(req, res, next);
+    })
+    .catch(next)
 
 }
 
