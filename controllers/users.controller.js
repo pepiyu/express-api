@@ -38,15 +38,15 @@ const list = (req, res, next) => {
 }
  
 const login = (req, res, next) => {
-    passport.authenticate('local-auth', (error, user, validations, accessToken) => {
+    passport.authenticate('local-auth', (error, accessToken, validations) => {
         if (error) {
           next(error);
-        } else if (!user) {
+        } else if (!accessToken) {
           next(createError(400, validations))
         } else {
-          req.login(user, error => {
+          req.login(accessToken, error => {
             if (error) next(error)
-            else res.json(user, accessToken)
+            else res.json(accessToken)
           })
         }
       })(req, res, next);}
