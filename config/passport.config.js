@@ -32,7 +32,7 @@ passport.use('local-auth', new LocalStrategy({
                     exp: Math.floor(Date.now() / 1000) + 60 * 60,
                 }, process.env.JWT_SECRET)
 
-              next(null, user)
+              next(null, user, null, accessToken)
             } else {
               next(null, null, { message: 'Invalid username or password' })
             }

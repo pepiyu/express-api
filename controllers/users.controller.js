@@ -38,7 +38,7 @@ const list = (req, res, next) => {
 }
  
 const login = (req, res, next) => {
-    passport.authenticate('local-auth', (error, user, validations) => {
+    passport.authenticate('local-auth', (error, user, validations, accessToken) => {
         if (error) {
           next(error);
         } else if (!user) {
@@ -46,7 +46,7 @@ const login = (req, res, next) => {
         } else {
           req.login(user, error => {
             if (error) next(error)
-            else res.json(user)
+            else res.json(user, accessToken)
           })
         }
       })(req, res, next);}
