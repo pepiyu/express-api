@@ -11,11 +11,6 @@ const users = require('../controllers/users.controller')
 const upload = require('../config/multer.config')
 const session = require('express-session')
 
-app.use(session({
-  secret: 'super secret',
-  resave: false,
-  saveUninitialized: true
-}))
 
 //accounts
 router.get('/accounts', sec.auth, accounts.list);
