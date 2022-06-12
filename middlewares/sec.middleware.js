@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const loadUser = (req, res, next) => {
     if (req.session.user && req.headers.authorization) {
+        console.log(req.session);
         console.log(req.session.user);
         User.findById(req.session.user)
         .then((user) => {
