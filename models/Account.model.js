@@ -23,7 +23,7 @@ const schema = new mongoose.Schema({
     contact_id: mongoose.ObjectId,
     image: {
         type: String, 
-        required: true,
+        required: false,
     },
     cups_number: {
         type: String,
@@ -57,7 +57,7 @@ const schema = new mongoose.Schema({
         type: String, 
         required: false,
     },
-
+    CIE_file: String,
 
 
 }, { timestamps: true,

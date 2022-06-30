@@ -27,7 +27,8 @@ const schema = new mongoose.Schema({
     oportunity_type_id: {
         type: mongoose.ObjectId,
         required: true,
-    }
+    },
+    quotation: [new mongoose.Schema({ path: String })],
 
 
 }, { timestamps: true,
