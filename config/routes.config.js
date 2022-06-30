@@ -3,6 +3,7 @@ const router = express.Router();
 const sec = require('../middlewares/sec.middleware')
 const accounts = require('../controllers/account.controller')
 const opportunities = require('../controllers/opportunity.controller')
+const opportunityTypes = require('../controllers/opportunityType.controller')
 const activities = require('../controllers/activity.controller')
 const contacts = require('../controllers/contact.controller')
 const stages = require('../controllers/stageType.controller')
@@ -23,6 +24,13 @@ router.post('/opportunities', sec.auth, opportunities.create)
 router.get('/opportunities/:id', sec.auth, opportunities.detail);
 router.patch('/opportunities/:id', sec.auth, opportunities.update);
 router.delete('/opportunities/:id', sec.auth, opportunities.remove);
+
+//activity_types
+router.get('/opportunity-types', sec.auth, opportunityTypes.list);
+router.post('/opportunity-types', sec.auth, opportunityTypes.create)
+router.get('/opportunity-types/:id', sec.auth, opportunityTypes.detail);
+router.patch('/opportunity-types/:id', sec.auth, opportunityTypes.update);
+router.delete('/opportunity-types/:id', sec.auth, opportunityTypes.remove);
 
 //activities
 router.get('/activities', sec.auth, activities.list);

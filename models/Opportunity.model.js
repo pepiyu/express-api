@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
+    createdBy: String,
+    updatedBy: String,
     title: String,
     description: String,
     source: String,
@@ -22,6 +24,10 @@ const schema = new mongoose.Schema({
         required: true,
     },
     stage_id: mongoose.ObjectId,
+    oportunity_type_id: {
+        type: mongoose.ObjectId,
+        required: true,
+    }
 
 
 }, { timestamps: true,

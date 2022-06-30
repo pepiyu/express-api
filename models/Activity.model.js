@@ -7,6 +7,10 @@ const schema = new mongoose.Schema({
     },
     opportunity_id: {
         type: mongoose.ObjectId,
+        required: false,
+    },
+    account_id: {
+        type: mongoose.ObjectId,
         required: true,
     },
     comment: {

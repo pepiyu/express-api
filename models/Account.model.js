@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
+    createdBy: String,
+    updatedBy: String,
     title: {
         type: String,
         required: true,
@@ -23,6 +25,40 @@ const schema = new mongoose.Schema({
         type: String, 
         required: true,
     },
+    cups_number: {
+        type: String,
+        required: false,
+    },
+    consumption_yearly: {
+        type: Number,
+        required: false,
+    },
+    comission_percentage: {
+        type: Number,
+        required: false,
+    },
+    activity_description: {
+        type: String,
+        required: false,
+    },
+    tension: {
+        type: String,
+        required: false,
+    },
+    representation: {
+        type: String,
+        required: false,
+    },
+    project_file: {
+        type: String, 
+        required: false,
+    },
+    memoria_file: {
+        type: String, 
+        required: false,
+    },
+
+
 
 }, { timestamps: true,
     toJSON: {
