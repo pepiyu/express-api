@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    oportunity_type_description: {
+    opportunity_type_description: {
         type: String,
         required: true
     }
