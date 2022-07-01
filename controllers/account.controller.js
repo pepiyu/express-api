@@ -16,7 +16,7 @@ const create = (req, res, next) => {
 
     Accounts.create({
         ...data,
-        image: req.file?.path
+        image: req.file?.path,
     })
     .then(account => {
         res.status(201).json(account);

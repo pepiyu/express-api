@@ -8,12 +8,13 @@ const activities = require('../controllers/activity.controller')
 const contacts = require('../controllers/contact.controller')
 const stages = require('../controllers/stageType.controller')
 const activityTypes = require('../controllers/activityType.controller')
+const autoconsumoTypes = require('../controllers/autoconsumoType.controller')
 const users = require('../controllers/users.controller')
 const upload = require('../config/multer.config')
 
 //accounts
 router.get('/accounts', sec.auth, accounts.list);
-router.post('/accounts', sec.auth, upload.single("image"), accounts.create)
+router.post('/accounts', sec.auth, upload.single("image"), upload.single("project_file"), upload.single("memoria_file"), accounts.create)
 router.get('/accounts/:id', sec.auth, accounts.detail);
 router.patch('/accounts/:id', sec.auth, accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
@@ -59,6 +60,13 @@ router.post('/activity-types', sec.auth, activityTypes.create)
 router.get('/activity-types/:id', sec.auth, activityTypes.detail);
 router.patch('/activity-types/:id', sec.auth, activityTypes.update);
 router.delete('/activity-types/:id', sec.auth, activityTypes.remove);
+
+//autoconsumo_types
+router.get('/autoconsumo-types', sec.auth, autoconsumoTypes.list);
+router.post('/autoconsumo-types', sec.auth, autoconsumoTypes.create)
+router.get('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.detail);
+router.patch('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.update);
+router.delete('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.remove);
 
 //auth
 router.post('/users', sec.auth, users.create);

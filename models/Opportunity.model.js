@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
         type: mongoose.ObjectId,
         required: true,
     },
-    quotation: [new mongoose.Schema({ path: String })],
+    /* quotation: [new mongoose.Schema({ path: String })], */
 
 
 }, { timestamps: true,

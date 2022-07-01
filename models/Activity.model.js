@@ -16,7 +16,11 @@ const schema = new mongoose.Schema({
     comment: {
         type: String,
         required: true,
-    }
+    },
+    activity_type_id: {
+        type: mongoose.ObjectId,
+        required: true,
+    },
 }, { timestamps: true,
 toJSON: {
     transform: (doc, ret) => {
