@@ -21,6 +21,10 @@ const schema = new mongoose.Schema({
         type: mongoose.ObjectId,
         required: true,
     },
+    user_id: {
+        type: mongoose.ObjectId,
+        required: true,
+    }
 }, { timestamps: true,
 toJSON: {
     transform: (doc, ret) => {
