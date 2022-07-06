@@ -11,6 +11,8 @@ const list = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
+
+    console.log(req.file)
     
     const data = req.body;
 

@@ -6,12 +6,16 @@ const schema = new mongoose.Schema({
     full_name: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 1,
     },
     phone: {
         type: String,
         required: true,
         minlength: 5,
+    },
+    nif: {
+        type: String,
+        required: false,
     },
     email: {
         type: String,

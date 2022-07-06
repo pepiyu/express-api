@@ -14,7 +14,7 @@ const upload = require('../config/multer.config')
 
 //accounts
 router.get('/accounts', sec.auth, accounts.list);
-router.post('/accounts', sec.auth, upload.single("image"), upload.single("project_file"), upload.single("memoria_file"), accounts.create)
+router.post('/accounts', sec.auth, upload.single("image"), accounts.create)
 router.get('/accounts/:id', sec.auth, accounts.detail);
 router.patch('/accounts/:id', sec.auth, accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
