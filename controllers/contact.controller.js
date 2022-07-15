@@ -16,7 +16,6 @@ const create = (req, res, next) => {
 
     Contacts.create({
         ...data,
-        image: req.file?.path
     })
     .then(item => {
         res.status(201).json(item);
