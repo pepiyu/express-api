@@ -16,6 +16,7 @@ require('./config/passport.config');
 app.use(logger('dev'))
 app.use(express.json())
 app.use(session)
+app.use(cors)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(auth.loadUser)
@@ -23,7 +24,6 @@ app.use(auth.loadUser)
 
 //Routes
 
-app.use(cors)
 const routes = require('./config/routes.config')
 app.use('/api', routes)
 
