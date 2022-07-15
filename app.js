@@ -23,6 +23,7 @@ app.use(auth.loadUser)
 
 
 //Routes
+app.use(cors)
 
 const routes = require('./config/routes.config')
 app.use('/api', routes)
