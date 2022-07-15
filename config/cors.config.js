@@ -1,18 +1,16 @@
 const cors = require('cors');
 const createError = require('http-errors');
 
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000').split(',')
-  .map(origin => origin.trim())
+var allowlist = ['http://localhost:3000']
 
-const corsOptions = {
-  credentials: true,
-  origin: function (origin, next) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      next(null, true);
-    } else {
-      next(createError(401, 'Not allowed by CORS'))
-    }
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
   }
+  callback(null, corsOptions) // callback expects two parameters: error and options
 }
 
-module.exports = cors(corsOptions);
+module.exports = cors(corsOptionsDelegate);
