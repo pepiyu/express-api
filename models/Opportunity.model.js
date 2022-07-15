@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     stage_id: mongoose.ObjectId,
-    oportunity_type_id: {
+    opportunity_type_id: {
         type: mongoose.ObjectId,
         required: true,
     },
