@@ -16,7 +16,7 @@ require('./config/passport.config');
 app.use(logger('dev'))
 app.use(express.json())
 app.use(session)
-//app.use(cors)
+app.use(cors)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(auth.loadUser)

@@ -1,5 +1,4 @@
 const cors = require('cors');
-const createError = require('http-errors');
 
 var allowlist = ['http://localhost:3000']
 
