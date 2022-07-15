@@ -29,6 +29,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    referencia_catastral: String,
     consumption_yearly: {
         type: Number,
         required: false,
@@ -58,6 +59,7 @@ const schema = new mongoose.Schema({
         required: false,
     },
     CIE_file: String,
+    account_type: String,
 
 
 }, { timestamps: true,

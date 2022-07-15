@@ -11,6 +11,14 @@ const activityTypes = require('../controllers/activityType.controller')
 const autoconsumoTypes = require('../controllers/autoconsumoType.controller')
 const users = require('../controllers/users.controller')
 const upload = require('../config/multer.config')
+const subvencion = require('../controllers/subvencion.controller')
+
+//subvencion
+router.get('/subvencion', sec.auth, subvencion.list)
+router.post('/subvencion', sec.auth, subvencion.create)
+router.get('/subvencion/:id', sec.auth, subvencion.detail)
+router.patch('/subvencion/:id', sec.auth, subvencion.update)
+router.delete('/subvencion/:id', sec.auth, subvencion.remove)
 
 //accounts
 router.get('/accounts', sec.auth, accounts.list);

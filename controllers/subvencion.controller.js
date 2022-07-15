@@ -1,9 +1,9 @@
-const Contacts = require('../models/Contact.model');
+const Subvencion = require('../models/Subvencion.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
 
-    Contacts.find()
+    Subvencion.find()
     .then(item => {
         res.json(item);
     })
@@ -14,9 +14,9 @@ const create = (req, res, next) => {
     
     const data = req.body;
 
-    Contacts.create({
+    Subvencion.create({
         ...data,
-        image: req.file?.path
+        //todo
     })
     .then(item => {
         res.status(201).json(item);
@@ -25,7 +25,7 @@ const create = (req, res, next) => {
 }
 
 const detail = (req, res, next) => {
-    Contacts.findById(req.params.id)
+    Subvencion.findById(req.params.id)
     .then(item => {
 
         if (item) {
@@ -40,7 +40,7 @@ const detail = (req, res, next) => {
 const update = (req, res, next) => {
     const body = req.body;
 
-    Contacts.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
+    Subvencion.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
         if (item) {
             res.json(item);
         } else {
@@ -50,7 +50,7 @@ const update = (req, res, next) => {
 }
 
 const remove = (req, res, next) => {
-    Contacts.findByIdAndRemove(req.params.id)
+    Subvencion.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
 }
