@@ -26,6 +26,7 @@ router.post('/accounts', sec.auth, upload.single("image"), accounts.create)
 router.get('/accounts/:id', sec.auth, accounts.detail);
 router.patch('/accounts/:id', sec.auth, accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
+router.get('/accounts-context/:id', sec.auth, accounts.context)
 
 //opportunities
 router.get('/opportunities', sec.auth, opportunities.list);

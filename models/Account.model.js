@@ -51,8 +51,8 @@ const schema = new mongoose.Schema({
         required: false,
     },
     project_file: {
-        type: String, 
-        required: false,
+        location: String,
+        use: Array,
     },
     memoria_file: {
         type: String, 
