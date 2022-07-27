@@ -1,37 +1,40 @@
-const StageTypes = require('../models/Stage_type.model');
+const Accounts = require('../models/Account.model');
+const Contact = require('../models/Contact.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
 
-    StageTypes.find()
-    .then(item => {
-        res.json(item);
+    Accounts.find()
+    .then(accounts => {
+        res.json(accounts);
     })
     .catch(next);
 }
 
 const create = (req, res, next) => {
+
+    console.log(req.file)
     
     const data = req.body;
 
-    StageTypes.create({
+    Accounts.create({
         ...data,
-        image: req.file?.path
+        image: req.file?.path,
     })
-    .then(item => {
-        res.status(201).json(item);
+    .then(account => {
+        res.status(201).json(account);
     })
     .catch(next)
 }
 
 const detail = (req, res, next) => {
-    StageTypes.findById(req.params.id)
-    .then(item => {
+    Accounts.findById(req.params.id)
+    .then(account => {
 
-        if (item) {
-            res.json(item);
+        if (account) {
+            res.json(account);
         } else {
-            next(createError(404, 'item not found'));
+            next(createError(404, 'Account not found'));
         }
 
     })
@@ -40,19 +43,41 @@ const detail = (req, res, next) => {
 const update = (req, res, next) => {
     const body = {title, address, description, phoneNumber} = req.body;
 
-    StageTypes.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
-        if (item) {
-            res.json(item);
+    Accounts.findByIdAndUpdate(req.params.id, body, { new: true }).then( account => {
+        if (account) {
+            res.json(account);
         } else {
-            next(createError(404, 'item not found'));
+            next(createError(404, 'Account not found'));
         }
     })
 }
 
 const remove = (req, res, next) => {
-    StageTypes.findByIdAndRemove(req.params.id)
+    Accounts.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
+}
+
+const context = (req, res, next) => {
+    Accounts.findById(req.params.id)
+    .then((account) => {
+        const contactDescription = Contact.findById(account.contact_id)
+        .then(
+            (contact) => {
+                console.log(contact.full_name)
+                return contact.full_name
+            })
+
+
+        const finalobj =  {...account, contactDescription}
+
+        return res.json(finalobj)
+
+    }
+
+
+    
+    )
 }
 
 module.exports = {
@@ -60,5 +85,6 @@ module.exports = {
     create,
     detail,
     update,
-    remove
+    remove,
+    context
 }
