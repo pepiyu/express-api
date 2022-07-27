@@ -62,22 +62,13 @@ const context = (req, res, next) => {
     Accounts.findById(req.params.id)
     .then((account) => {
         const contactDescription = Contact.findById(account.contact_id)
-        .then(
-            (contact) => {
-                console.log(contact.full_name)
+        .then((contact) => {
                 return contact.full_name
             })
-
-
         const finalobj =  {...account, contactDescription}
 
         return res.json(finalobj)
-
-    }
-
-
-    
-    )
+    })
 }
 
 module.exports = {
