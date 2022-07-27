@@ -1,4 +1,5 @@
 const Accounts = require('../models/Account.model');
+const Contact = require('../models/Contact.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
@@ -57,10 +58,33 @@ const remove = (req, res, next) => {
     .catch(next);
 }
 
+const context = (req, res, next) => {
+    Accounts.findById(req.params.id)
+    .then((account) => {
+        const contactDescription = Contact.findById(account.contact_id)
+        .then(
+            (contact) => {
+                console.log(contact.full_name)
+                return contact.full_name
+            })
+
+
+        const finalobj =  {...account, contactDescription}
+
+        return res.json(finalobj)
+
+    }
+
+
+    
+    )
+}
+
 module.exports = {
     list,
     create,
     detail,
     update,
-    remove
+    remove,
+    context
 }
