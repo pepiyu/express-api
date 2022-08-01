@@ -24,7 +24,11 @@ router.delete('/subvencion/:id', sec.auth, subvencion.remove)
 router.get('/accounts', sec.auth, accounts.list);
 router.post('/accounts', sec.auth, upload.single("image"), accounts.create)
 router.get('/accounts/:id', sec.auth, accounts.detail);
-router.patch('/accounts/:id', sec.auth, accounts.update);
+router.patch('/accounts/:id', sec.auth, upload.fields([
+    { name: "CIE_file", maxCount: 1 },
+    { name: "project_file", maxCount: 1 },
+    { name: "memoria_file", maxCount: 1 },
+]), accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
 
 //opportunities

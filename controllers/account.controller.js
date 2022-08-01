@@ -42,7 +42,14 @@ const detail = (req, res, next) => {
 const update = (req, res, next) => {
     const body = {title, address, description, phoneNumber} = req.body;
 
-    Accounts.findByIdAndUpdate(req.params.id, body, { new: true }).then( account => {
+    Accounts.findByIdAndUpdate(req.params.id, 
+        {
+            body, 
+            project_file: req.files.project_file?.[0].path,
+            CIE_file: req.files.CIE_file?.[0].path,
+            memoria_file: req.files.memoria_file?.[0].path,
+        }, 
+        { new: true }).then( account => {
         if (account) {
             res.json(account);
         } else {
