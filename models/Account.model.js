@@ -59,6 +59,7 @@ const schema = new mongoose.Schema({
         required: false,
     },
     CIE_file: String,
+    factura_file: String,
     account_type: String,
 
 
