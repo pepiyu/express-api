@@ -48,6 +48,7 @@ const update = (req, res, next) => {
             project_file: req.files.project_file?.[0].path,
             CIE_file: req.files.CIE_file?.[0].path,
             memoria_file: req.files.memoria_file?.[0].path,
+            image: req.files.image?.[0].path,
     
         }
     }

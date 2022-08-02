@@ -28,6 +28,7 @@ router.patch('/accounts/:id', sec.auth, upload.fields([
     { name: "CIE_file", maxCount: 1 },
     { name: "project_file", maxCount: 1 },
     { name: "memoria_file", maxCount: 1 },
+    { name: "image", maxCount: 1 },
 ]), accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
 
