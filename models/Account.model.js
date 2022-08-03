@@ -60,7 +60,10 @@ const schema = new mongoose.Schema({
     },
     CIE_file: String,
     account_type: String,
-
+    forma_pago: {
+        type: String, 
+        required: false,
+    }
 
 }, { timestamps: true,
     toJSON: {
