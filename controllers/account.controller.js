@@ -60,25 +60,15 @@ const remove = (req, res, next) => {
 
 const context = (req, res, next) => {
     Accounts.findById(req.params.id)
-    let name = ''
     .then((account) => {
-        name = Contact.findById(account.contact_id)
+        Contact.findById(account.contact_id)
         .then(
             (contact) => {
-                return contact.full_name
-
+                res.json({ account, contact });
             })
+        .catch(next);
 
-
-        const finalobj =  {...account, name}
-
-        res.json(finalobj)
-
-    }
-
-
-    
-    )
+    }).catch(next);
 }
 
 module.exports = {
