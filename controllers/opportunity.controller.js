@@ -1,4 +1,5 @@
 const Opportunities = require('../models/Opportunity.model');
+const Stage = require('../models/Stage_type.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
@@ -53,6 +54,18 @@ const remove = (req, res, next) => {
     Opportunities.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
+}
+
+const context = (req, res, next) => {
+    Opportunities.findById(req.params.id)
+    .then((item) => {
+        Stage.findById(item.stage_id)
+        .then(
+            (stage) => {
+                res.json({ item, stage });
+            })
+        .catch(next);
+    }).catch(next);
 }
 
 module.exports = {

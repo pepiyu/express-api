@@ -61,19 +61,13 @@ const remove = (req, res, next) => {
 const context = (req, res, next) => {
     Accounts.findById(req.params.id)
     .then((account) => {
-        const contactDescription = this.contactDesc(account.contact_id)
-        console.log(contactDescription)
-        const finalObj = {account, contactDescription}
-        return res.json(finalObj)
-    })
-}
-
-const contactDesc = (req, res, next) => {
-    Contact.findById(req)
-    .then((contact) => {
-        const finalObj = contact.full_name
-        return res.json(finalObj)
-    })
+        Contact.findById(account.contact_id)
+        .then(
+            (contact) => {
+                res.json({ account, contact });
+            })
+        .catch(next);
+    }).catch(next);
 }
 
 module.exports = {

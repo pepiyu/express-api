@@ -34,6 +34,7 @@ router.post('/opportunities', sec.auth, opportunities.create)
 router.get('/opportunities/:id', sec.auth, opportunities.detail);
 router.patch('/opportunities/:id', sec.auth, opportunities.update);
 router.delete('/opportunities/:id', sec.auth, opportunities.remove);
+router.get('/opportunities-context/:id', sec.auth, opportunities.context);
 
 //activity_types
 router.get('/opportunity-types', sec.auth, opportunityTypes.list);
