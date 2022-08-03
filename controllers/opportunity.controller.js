@@ -58,11 +58,11 @@ const remove = (req, res, next) => {
 
 const context = (req, res, next) => {
     Opportunities.findById(req.params.id)
-    .then((item) => {
-        Stage.findById(item.stage_id)
+    .then((oportunidad) => {
+        Stage.findById(oportunidad.stage_id)
         .then(
             (stage) => {
-                res.json({ item, stage });
+                res.json({ oportunidad, stage });
             })
         .catch(next);
     }).catch(next);
@@ -73,5 +73,6 @@ module.exports = {
     create,
     detail,
     update,
-    remove
+    remove,
+    context
 }
