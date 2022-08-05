@@ -49,8 +49,8 @@ const schema = new mongoose.Schema({
         required: false,
     },
     project_file: {
-        type: String, 
-        required: false,
+        location: String,
+        use: Array,
     },
     memoria_file: {
         type: String, 
@@ -61,6 +61,10 @@ const schema = new mongoose.Schema({
     nif_representante_file: String,
     factura_file: String,
     account_type: String,
+    forma_pago: {
+        type: String, 
+        required: false,
+    },
     autorizacion_file: String,
 
 }, { timestamps: true,

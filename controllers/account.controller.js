@@ -1,4 +1,5 @@
 const Accounts = require('../models/Account.model');
+const Contact = require('../models/Contact.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
@@ -73,10 +74,23 @@ const remove = (req, res, next) => {
     .catch(next);
 }
 
+const context = (req, res, next) => {
+    Accounts.findById(req.params.id)
+    .then((account) => {
+        Contact.findById(account.contact_id)
+        .then(
+            (contact) => {
+                res.json({ account, contact });
+            })
+        .catch(next);
+    }).catch(next);
+}
+
 module.exports = {
     list,
     create,
     detail,
     update,
-    remove
+    remove,
+    context
 }

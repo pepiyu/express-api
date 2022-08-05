@@ -1,10 +1,10 @@
-const Opportunities = require('../models/Opportunity.model');
-const Stage = require('../models/Stage_type.model');
+const Timeline = require('../models/Timeline.model');
+const Etapa = require('../models/Etapa.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
 
-    Opportunities.find()
+    Timeline.find()
     .then(item => {
         res.json(item);
     })
@@ -13,12 +13,12 @@ const list = (req, res, next) => {
 
 const create = (req, res, next) => {
     
-    const data = req.body;
+    const body = {title, description, createdBy, createdAt} = req.body;
 
-    Opportunities.create({
-        ...data,
-        image: req.file?.path
+    Timeline.create({
+        ...body
     })
+
     .then(item => {
         res.status(201).json(item);
     })
@@ -26,7 +26,7 @@ const create = (req, res, next) => {
 }
 
 const detail = (req, res, next) => {
-    Opportunities.findById(req.params.id)
+    Timeline.findById(req.params.id)
     .then(item => {
 
         if (item) {
@@ -39,9 +39,9 @@ const detail = (req, res, next) => {
 }
 
 const update = (req, res, next) => {
-    const body = {title, address, description, phoneNumber} = req.body;
+    const body = {title, description, updatedBy, updatedAt} = req.body;
 
-    Opportunities.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
+    Timeline.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
         if (item) {
             res.json(item);
         } else {
@@ -51,18 +51,18 @@ const update = (req, res, next) => {
 }
 
 const remove = (req, res, next) => {
-    Opportunities.findByIdAndRemove(req.params.id)
+    Timeline.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
 }
 
 const context = (req, res, next) => {
-    Opportunities.findById(req.params.id)
-    .then((oportunidad) => {
-        Stage.findById(oportunidad.stage_id)
+    Timeline.findById(req.params.id)
+    .then((paso) => {
+        Etapa.findById(paso.etapa_id)
         .then(
-            (stage) => {
-                res.json({ oportunidad, stage });
+            (etapa) => {
+                res.json({ paso, etapa });
             })
         .catch(next);
     }).catch(next);

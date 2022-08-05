@@ -1,10 +1,9 @@
-const Opportunities = require('../models/Opportunity.model');
-const Stage = require('../models/Stage_type.model');
+const Etapa = require('../models/Etapa.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
 
-    Opportunities.find()
+    Etapa.find()
     .then(item => {
         res.json(item);
     })
@@ -13,11 +12,10 @@ const list = (req, res, next) => {
 
 const create = (req, res, next) => {
     
-    const data = req.body;
+    const body = {title, description, createdBy, createdAt} = req.body;
 
-    Opportunities.create({
-        ...data,
-        image: req.file?.path
+    Etapa.create({
+        ...body,
     })
     .then(item => {
         res.status(201).json(item);
@@ -26,7 +24,7 @@ const create = (req, res, next) => {
 }
 
 const detail = (req, res, next) => {
-    Opportunities.findById(req.params.id)
+    Etapa.findById(req.params.id)
     .then(item => {
 
         if (item) {
@@ -39,9 +37,9 @@ const detail = (req, res, next) => {
 }
 
 const update = (req, res, next) => {
-    const body = {title, address, description, phoneNumber} = req.body;
+    const body = {title, description, updatedBy, updatedAt} = req.body;
 
-    Opportunities.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
+    Etapa.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
         if (item) {
             res.json(item);
         } else {
@@ -51,21 +49,9 @@ const update = (req, res, next) => {
 }
 
 const remove = (req, res, next) => {
-    Opportunities.findByIdAndRemove(req.params.id)
+    Etapa.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
-}
-
-const context = (req, res, next) => {
-    Opportunities.findById(req.params.id)
-    .then((oportunidad) => {
-        Stage.findById(oportunidad.stage_id)
-        .then(
-            (stage) => {
-                res.json({ oportunidad, stage });
-            })
-        .catch(next);
-    }).catch(next);
 }
 
 module.exports = {
@@ -73,6 +59,5 @@ module.exports = {
     create,
     detail,
     update,
-    remove,
-    context
+    remove
 }
