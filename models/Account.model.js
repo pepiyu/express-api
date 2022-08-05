@@ -18,6 +18,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    provincia: String,
     contact_id: mongoose.ObjectId,
     image: {
         type: String, 
@@ -56,6 +57,8 @@ const schema = new mongoose.Schema({
         type: String, 
         required: false,
     },
+    comunicacion_file: String,
+
     CIE_file: String,
     nif_file: String,
     nif_representante_file: String,
@@ -66,6 +69,7 @@ const schema = new mongoose.Schema({
         required: false,
     },
     autorizacion_file: String,
+    certificado_bancario_file: String,
 
 }, { timestamps: true,
     toJSON: {
