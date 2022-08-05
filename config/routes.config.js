@@ -36,12 +36,27 @@ router.patch('/opportunities/:id', sec.auth, opportunities.update);
 router.delete('/opportunities/:id', sec.auth, opportunities.remove);
 router.get('/opportunities-context/:id', sec.auth, opportunities.context);
 
-//activity_types
+//opportunity_types
 router.get('/opportunity-types', sec.auth, opportunityTypes.list);
 router.post('/opportunity-types', sec.auth, opportunityTypes.create)
 router.get('/opportunity-types/:id', sec.auth, opportunityTypes.detail);
 router.patch('/opportunity-types/:id', sec.auth, opportunityTypes.update);
 router.delete('/opportunity-types/:id', sec.auth, opportunityTypes.remove);
+
+//timeline
+router.get('/timeline', sec.auth, timeline.list);
+router.post('/timeline', sec.auth, timeline.create)
+router.get('/timeline/:id', sec.auth, timeline.detail);
+router.patch('/timeline/:id', sec.auth, timeline.update);
+router.delete('/timeline/:id', sec.auth, timeline.remove);
+router.get('/timeline-context/:id', sec.auth, timeline.context);
+
+//etapa
+router.get('/etapa', sec.auth, opportunityTypes.list);
+router.post('/etapa', sec.auth, opportunityTypes.create)
+router.get('/etapa/:id', sec.auth, opportunityTypes.detail);
+router.patch('/etapa/:id', sec.auth, opportunityTypes.update);
+router.delete('/etapa/:id', sec.auth, opportunityTypes.remove);
 
 //activities
 router.get('/activities', sec.auth, activities.list);
