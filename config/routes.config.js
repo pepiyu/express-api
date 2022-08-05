@@ -35,6 +35,7 @@ router.patch('/accounts/:id', sec.auth, upload.fields([
     { name: "nif_file", maxCount: 1 },
     { name: "nif_representante_file", maxCount: 1 },
     { name: "certificado_bancario_file", maxCount: 1 },
+    { name: "comunicacion_file", maxCount: 1 },
     { name: "image", maxCount: 1 },
 ]), accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);

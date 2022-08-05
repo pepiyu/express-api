@@ -58,7 +58,6 @@ const schema = new mongoose.Schema({
         required: false,
     },
     comunicacion_file: String,
-
     CIE_file: String,
     nif_file: String,
     nif_representante_file: String,
