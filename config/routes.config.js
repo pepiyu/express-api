@@ -17,7 +17,10 @@ const subvencion = require('../controllers/subvencion.controller')
 router.get('/subvencion', sec.auth, subvencion.list)
 router.post('/subvencion', sec.auth, subvencion.create)
 router.get('/subvencion/:id', sec.auth, subvencion.detail)
-router.patch('/subvencion/:id', sec.auth, subvencion.update)
+router.patch('/subvencion/:id', sec.auth, upload.fields([
+    { name: "formulario", maxCount: 1 },
+    { name: "acuso_recibo_file", maxCount: 1 },
+]), subvencion.update)
 router.delete('/subvencion/:id', sec.auth, subvencion.remove)
 
 //accounts
@@ -28,6 +31,9 @@ router.patch('/accounts/:id', sec.auth, upload.fields([
     { name: "CIE_file", maxCount: 1 },
     { name: "project_file", maxCount: 1 },
     { name: "memoria_file", maxCount: 1 },
+    { name: "autorizacion_file", maxCount: 1 },
+    { name: "nif_file", maxCount: 1 },
+    { name: "nif_representante_file", maxCount: 1 },
     { name: "image", maxCount: 1 },
 ]), accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);

@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
     stage_id: mongoose.ObjectId,
     opportunity_type_id: {
         type: mongoose.ObjectId,
-        required: true,
+        required: false,
     },
     /* quotation: [new mongoose.Schema({ path: String })], */
 

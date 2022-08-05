@@ -5,7 +5,7 @@ const schema = new mongoose.Schema({
     updatedAt: Date,
     account_id: {
         type: mongoose.ObjectId,
-        required: true,
+        required: false,
     },
     opportunity_id: {
         type: mongoose.ObjectId,
@@ -31,10 +31,11 @@ const schema = new mongoose.Schema({
         type: mongoose.ObjectId,
         required: false,
     },
-    nif_file: String,
-    nif_representante_file: String,
     acreditacion_file: String,
-
+    tramite_number: String,
+    ccaa: String,
+    presentacionDate: Date,
+    comission: String,
     }, { timestamps: true,
     toJSON: {
         transform: (doc, ret) => {

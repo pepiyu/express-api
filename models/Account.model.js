@@ -8,17 +8,15 @@ const schema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        minlength: 5,
     },
     description: {
         type: String,
-        required: true,
-        minlength: 5,
+        required: false,
     },
+    cif_number: String,
     address: {
         type: String,
-        required: true,
-        minlength: 5,
+        required: false,
     },
     contact_id: mongoose.ObjectId,
     image: {
@@ -59,9 +57,11 @@ const schema = new mongoose.Schema({
         required: false,
     },
     CIE_file: String,
+    nif_file: String,
+    nif_representante_file: String,
     factura_file: String,
     account_type: String,
-
+    autorizacion_file: String,
 
 }, { timestamps: true,
     toJSON: {
