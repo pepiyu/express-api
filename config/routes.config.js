@@ -26,6 +26,7 @@ router.post('/accounts', sec.auth, upload.single("image"), accounts.create)
 router.get('/accounts/:id', sec.auth, accounts.detail);
 router.patch('/accounts/:id', sec.auth, accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);
+router.get('/accounts-context/:id', sec.auth, accounts.context)
 
 //opportunities
 router.get('/opportunities', sec.auth, opportunities.list);
@@ -33,6 +34,7 @@ router.post('/opportunities', sec.auth, opportunities.create)
 router.get('/opportunities/:id', sec.auth, opportunities.detail);
 router.patch('/opportunities/:id', sec.auth, opportunities.update);
 router.delete('/opportunities/:id', sec.auth, opportunities.remove);
+router.get('/opportunities-context/:id', sec.auth, opportunities.context);
 
 //activity_types
 router.get('/opportunity-types', sec.auth, opportunityTypes.list);
