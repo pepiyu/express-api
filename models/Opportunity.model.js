@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const Timeline = require('../models/Timeline.model')
 const schema = new mongoose.Schema({
     createdAt: Date,
     updatedAt: Date,
@@ -29,6 +29,10 @@ const schema = new mongoose.Schema({
         required: false,
     },
     /* quotation: [new mongoose.Schema({ path: String })], */
+    tramites: [new mongoose.Schema({
+        Timeline_id: mongoose.ObjectId,
+    })],
+        
 
 
 }, { timestamps: true,

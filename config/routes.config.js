@@ -19,6 +19,9 @@ router.post('/subvencion', sec.auth, subvencion.create)
 router.get('/subvencion/:id', sec.auth, subvencion.detail)
 router.patch('/subvencion/:id', sec.auth, upload.fields([
     { name: "formulario", maxCount: 1 },
+    { name: "declaracion_file", maxCount: 1 },
+    { name: "autorizacion_file", maxCount: 1 },
+    { name: "acreditacion_file", maxCount: 1 },
     { name: "acuso_recibo_file", maxCount: 1 },
 ]), subvencion.update)
 router.delete('/subvencion/:id', sec.auth, subvencion.remove)
@@ -36,6 +39,7 @@ router.patch('/accounts/:id', sec.auth, upload.fields([
     { name: "nif_representante_file", maxCount: 1 },
     { name: "certificado_bancario_file", maxCount: 1 },
     { name: "comunicacion_file", maxCount: 1 },
+    { name: "factura_file", maxCount: 1 },
     { name: "image", maxCount: 1 },
 ]), accounts.update);
 router.delete('/accounts/:id', sec.auth, accounts.remove);

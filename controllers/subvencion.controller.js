@@ -40,6 +40,19 @@ const detail = (req, res, next) => {
 const update = (req, res, next) => {
     const body = req.body;
 
+    let files = {}
+
+    if (req.files) {
+        files = {
+            formulario: req.files.formulario?.[0].path,
+            declaracion_file: req.files.declaracion_file?.[0].path,    
+            autorizacion_file: req.files.autorizacion_file?.[0].path,    
+            acreditacion_file: req.files.acreditacion_file?.[0].path,    
+            acuso_recibo_file: req.files.acuso_recibo_file?.[0].path,    
+        }
+    }
+
+
     Subvencion.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
         if (item) {
             res.json(item);

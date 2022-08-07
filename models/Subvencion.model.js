@@ -36,6 +36,7 @@ const schema = new mongoose.Schema({
     ccaa: String,
     presentacionDate: Date,
     comission: String,
+    acuso_recibo_file: String,
     }, { timestamps: true,
     toJSON: {
         transform: (doc, ret) => {

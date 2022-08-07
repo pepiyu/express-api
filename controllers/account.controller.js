@@ -50,6 +50,12 @@ const update = (req, res, next) => {
             CIE_file: req.files.CIE_file?.[0].path,
             memoria_file: req.files.memoria_file?.[0].path,
             image: req.files.image?.[0].path,
+            autorizacion_file: req.files.autorizacion_file?.[0].path,
+            nif_file: req.files.nif_file?.[0].path,
+            nif_representante_file: req.files.nif_representante_file?.[0].path,
+            comunicacion_file: req.files.comunicacion_file?.[0].path,
+            certificado_bancario_file: req.files.certificado_bancario_file?.[0].path,
+            factura_file: req.files.factura_file?.[0].path,
     
         }
     }
