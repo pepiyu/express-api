@@ -22,6 +22,11 @@ const schema = new mongoose.Schema({
         required: true,
         minlength: 5,
     },
+    type: {
+        type: String,
+        required: true,
+        value: ['Particular', 'Persona jurídica', 'Comunidad de vecinos']
+    },
 }, { timestamps: true,
     toJSON: {
         transform: (doc, ret) => {
