@@ -13,6 +13,9 @@ const users = require('../controllers/users.controller')
 const upload = require('../config/multer.config')
 const subvencion = require('../controllers/subvencion.controller')
 const timeline = require('../controllers/timeline.controller')
+const etapa = require('../controllers/etapa.controller')
+const bonificacion = require('../controllers/bonificacion.controller')
+
 //subvencion
 router.get('/subvencion', sec.auth, subvencion.list)
 router.post('/subvencion', sec.auth, subvencion.create)
@@ -69,11 +72,11 @@ router.delete('/timeline/:id', sec.auth, timeline.remove);
 router.get('/timeline-context/:id', sec.auth, timeline.context);
 
 //etapa
-router.get('/etapa', sec.auth, opportunityTypes.list);
-router.post('/etapa', sec.auth, opportunityTypes.create)
-router.get('/etapa/:id', sec.auth, opportunityTypes.detail);
-router.patch('/etapa/:id', sec.auth, opportunityTypes.update);
-router.delete('/etapa/:id', sec.auth, opportunityTypes.remove);
+router.get('/etapa', sec.auth, etapa.list);
+router.post('/etapa', sec.auth, etapa.create)
+router.get('/etapa/:id', sec.auth, etapa.detail);
+router.patch('/etapa/:id', sec.auth, etapa.update);
+router.delete('/etapa/:id', sec.auth, etapa.remove);
 
 //activities
 router.get('/activities', sec.auth, activities.list);
@@ -109,6 +112,13 @@ router.post('/autoconsumo-types', sec.auth, autoconsumoTypes.create)
 router.get('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.detail);
 router.patch('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.update);
 router.delete('/autoconsumo-types/:id', sec.auth, autoconsumoTypes.remove);
+
+//bonificacion
+router.get('/bonificacion', sec.auth, bonificacion.list);
+router.post('/bonificacion', sec.auth, bonificacion.create)
+router.get('/bonificacion/:id', sec.auth, bonificacion.detail);
+router.patch('/bonificacion/:id', sec.auth, bonificacion.update);
+router.delete('/bonificacion/:id', sec.auth, bonificacion.remove);
 
 //auth
 router.post('/users', sec.auth, users.create);
