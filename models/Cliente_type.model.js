@@ -1,15 +1,10 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    bonificacion_description: {
-        type: mongoose.ObjectId,
+    etapa_description: {
+        type: String,
         required: true,
-    },
-    createdAt: Date,
-    updatedAt: Date,
-    createdBy: String,
-    updatedBy: String,
-    title: String,
+        },
 }, 
 
 {
@@ -22,4 +17,4 @@ const schema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Bonificación', schema)
+module.exports = mongoose.model('Cliente_type', schema)

@@ -15,6 +15,7 @@ const subvencion = require('../controllers/subvencion.controller')
 const timeline = require('../controllers/timeline.controller')
 const etapa = require('../controllers/etapa.controller')
 const etapaTypes = require('../controllers/etapaType.controller')
+const clienteTypes = require('../controllers/clienteType.controller')
 const bonificacion = require('../controllers/bonificacion.controller')
 
 //subvencion
@@ -85,6 +86,13 @@ router.post('/etapa-types', sec.auth, etapaTypes.create)
 router.get('/etapa-types/:id', sec.auth, etapaTypes.detail);
 router.patch('/etapa-types/:id', sec.auth, etapaTypes.update);
 router.delete('/etapa-types/:id', sec.auth, etapaTypes.remove);
+
+//cliente_types
+router.get('/cliente-types', sec.auth, clienteTypes.list);
+router.post('/cliente-types', sec.auth, clienteTypes.create)
+router.get('/cliente-types/:id', sec.auth, clienteTypes.detail);
+router.patch('/cliente-types/:id', sec.auth, clienteTypes.update);
+router.delete('/cliente-types/:id', sec.auth, clienteTypes.remove);
 
 //activities
 router.get('/activities', sec.auth, activities.list);

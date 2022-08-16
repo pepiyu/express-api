@@ -1,9 +1,9 @@
-const EtapaTypes = require('../models/Etapa_type.model');
+const ClienteTypes = require('../models/Etapa_type.model');
 const createError = require('http-errors');
 
 const list = (req, res, next) => {
 
-    EtapaTypes.find()
+    ClienteTypes.find()
     .then(item => {
         res.json(item);
     })
@@ -14,7 +14,7 @@ const create = (req, res, next) => {
     
     const data = req.body;
 
-    EtapaTypes.create({
+    ClienteTypes.create({
         ...data,
         image: req.file?.path
     })
@@ -25,7 +25,7 @@ const create = (req, res, next) => {
 }
 
 const detail = (req, res, next) => {
-    EtapaTypes.findById(req.params.id)
+    ClienteTypes.findById(req.params.id)
     .then(item => {
 
         if (item) {
@@ -40,7 +40,7 @@ const detail = (req, res, next) => {
 const update = (req, res, next) => {
     const body = {title, address, description, phoneNumber} = req.body;
 
-    EtapaTypes.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
+    ClienteTypes.findByIdAndUpdate(req.params.id, body, { new: true }).then( item => {
         if (item) {
             res.json(item);
         } else {
@@ -50,7 +50,7 @@ const update = (req, res, next) => {
 }
 
 const remove = (req, res, next) => {
-    EtapaTypes.findByIdAndRemove(req.params.id)
+    ClienteTypes.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
     .catch(next);
 }

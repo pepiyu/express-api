@@ -23,9 +23,8 @@ const schema = new mongoose.Schema({
         minlength: 5,
     },
     type: {
-        type: String,
-        required: true,
-        value: 'Particular' | 'Persona jurídica' | 'Comunidad de vecinos'
+        type: mongoose.ObjectId,
+        required: false,
     },
 }, { timestamps: true,
     toJSON: {
