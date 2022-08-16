@@ -5,6 +5,14 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
         },
+    plazos:{
+        type: String,
+        required: true,
+        },
+    documentacion:{
+        type: String,
+        required: true,
+        },
 }, 
 
 {
