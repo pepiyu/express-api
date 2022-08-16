@@ -7,11 +7,11 @@ const schema = new mongoose.Schema({
         },
     plazos:{
         type: String,
-        required: true,
+        required: false,
         },
     documentacion:{
         type: String,
-        required: true,
+        required: false,
         },
 }, 
 
