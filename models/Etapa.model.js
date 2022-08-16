@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    etapa_id: {
+    etapa_description: {
         type: mongoose.ObjectId,
-        required: false,
+        required: true,
     },
     createdAt: Date,
     updatedAt: Date,
