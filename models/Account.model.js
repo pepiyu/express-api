@@ -64,9 +64,8 @@ const schema = new mongoose.Schema({
     factura_file: String,
     account_type: String,
     forma_pago: {
-        type: String, 
+        type: mongoose.ObjectId, 
         required: false,
-        value: 'Financiación' | 'Al contado'
     },
     autorizacion_file: String,
     certificado_bancario_file: String,
