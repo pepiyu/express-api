@@ -14,6 +14,7 @@ const upload = require('../config/multer.config')
 const subvencion = require('../controllers/subvencion.controller')
 const timeline = require('../controllers/timeline.controller')
 const etapa = require('../controllers/etapa.controller')
+const etapaTypes = require('../controllers/etapaType.controller')
 const bonificacion = require('../controllers/bonificacion.controller')
 
 //subvencion
@@ -77,6 +78,13 @@ router.post('/etapa', sec.auth, etapa.create)
 router.get('/etapa/:id', sec.auth, etapa.detail);
 router.patch('/etapa/:id', sec.auth, etapa.update);
 router.delete('/etapa/:id', sec.auth, etapa.remove);
+
+//etapa_types
+router.get('/etapa-types', sec.auth, etapaTypes.list);
+router.post('/etapa-types', sec.auth, etapaTypes.create)
+router.get('/etapa-types/:id', sec.auth, etapaTypes.detail);
+router.patch('/etapa-types/:id', sec.auth, etapaTypes.update);
+router.delete('/etapa-types/:id', sec.auth, etapaTypes.remove);
 
 //activities
 router.get('/activities', sec.auth, activities.list);
